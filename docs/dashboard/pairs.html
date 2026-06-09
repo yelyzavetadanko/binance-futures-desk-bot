@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pairs Management</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand"><h1>Futures Bot UI</h1><p class="muted">Pairs section</p></div>
+        <nav class="nav">
+          <a href="index.html">Overview</a><a href="trading.html">Trading</a><a href="pairs.html">Pairs</a><a href="risk.html">Risk</a><a href="telegram.html">Telegram</a><a href="history.html">History</a>
+        </nav>
+        <div class="card">
+          <div class="control"><label>Data Mode</label><select id="dataMode"><option value="demo">Demo</option><option value="live">Live (read-only)</option></select></div>
+          <div class="control"><label>Live API Base URL</label><input id="liveBaseUrl" type="text" /></div>
+          <div class="control"><label>Live Read Token</label><input id="liveReadToken" type="password" /></div>
+        </div>
+      </aside>
+      <main class="content">
+        <section class="card top-card">
+          <div>
+            <h2>Trading Pairs & Lists</h2>
+            <p class="muted">Manage allow/deny lists and import symbols from CSV in a server-ready flow.</p>
+          </div>
+          <span class="badge primary">Pairs</span>
+        </section>
+        <form class="card grid grid-2" data-settings-form>
+          <div class="control">
+            <label>Blacklist (CSV)</label>
+            <textarea name="symbol_blacklist"></textarea>
+            <span class="hint">Never trade these pairs.</span>
+          </div>
+          <div class="control">
+            <label>Whitelist for limited_live (CSV)</label>
+            <textarea name="rollout_limited_symbols_csv"></textarea>
+            <span class="hint">Allowed symbols for limited_live mode.</span>
+          </div>
+        </form>
+
+        <section class="card grid">
+          <h3>CSV Upload Pipeline</h3>
+          <p class="hint">Recommended flow: upload CSV -> parse/preview -> push to server endpoint -> persist to bot settings.</p>
+          <div class="upload-options">
+            <div class="control">
+              <div class="label-row">
+                <label>Import Target List</label>
+                <button type="button" class="help-btn" data-help-key="pairs_import_target">?</button>
+              </div>
+              <div class="segmented">
+                <label><input type="radio" name="pairs_import_target" value="whitelist" checked /><span>Whitelist</span></label>
+                <label><input type="radio" name="pairs_import_target" value="blacklist" /><span>Blacklist</span></label>
+              </div>
+            </div>
+            <div class="control">
+              <div class="label-row">
+                <label>Apply Mode</label>
+                <button type="button" class="help-btn" data-help-key="pairs_apply_mode">?</button>
+              </div>
+              <div class="segmented">
+                <label><input type="radio" name="pairs_apply_mode" value="replace" checked /><span>Replace</span></label>
+                <label><input type="radio" name="pairs_apply_mode" value="append" /><span>Append</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="control">
+            <label>Pairs CSV file</label>
+            <div class="file-picker">
+              <input id="pairsCsvFile" class="file-input-hidden" type="file" accept=".csv,text/csv" />
+              <button id="pickPairsFileBtn" class="btn primary" type="button">Choose CSV File</button>
+              <span id="pairsCsvFileName" class="muted small">No file selected</span>
+            </div>
+          </div>
+          <div class="card">
+            <p class="muted">Parsed symbols preview</p>
+            <div id="pairsPreview" class="pill-wrap"></div>
+          </div>
+          <div class="actions">
+            <button id="uploadPairsBtn" class="btn primary" type="button">Upload CSV to Server</button>
+          </div>
+          <p id="uploadPairsInfo" class="hint">No file selected.</p>
+        </section>
+
+        <div class="actions"><button id="saveBtn" class="btn primary" type="button">Save Lists</button><button id="resetBtn" class="btn ghost" type="button">Reset</button></div>
+      </main>
+    </div>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

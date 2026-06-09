@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Risk Controls</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand"><h1>Futures Bot UI</h1><p class="muted">Risk section</p></div>
+        <nav class="nav">
+          <a href="index.html">Overview</a><a href="trading.html">Trading</a><a href="pairs.html">Pairs</a><a href="risk.html">Risk</a><a href="telegram.html">Telegram</a><a href="history.html">History</a>
+        </nav>
+        <div class="card">
+          <div class="control"><label>Data Mode</label><select id="dataMode"><option value="demo">Demo</option><option value="live">Live (read-only)</option></select></div>
+          <div class="control"><label>Live API Base URL</label><input id="liveBaseUrl" type="text" /></div>
+          <div class="control"><label>Live Read Token</label><input id="liveReadToken" type="password" /></div>
+        </div>
+      </aside>
+      <main class="content">
+        <section class="card top-card">
+          <div>
+            <h2>Risk & Leverage Controls</h2>
+            <p class="muted">Position sizing, leverage ceilings, and safety brakes for loss protection.</p>
+          </div>
+          <span class="badge primary">Risk</span>
+        </section>
+        <section class="card info-strip">
+          <p>All risk values are shown in trading-native units (USD/USDT/fractions). Keep changes incremental and test in limited_live first.</p>
+        </section>
+        <form class="card grid grid-2" data-settings-form>
+          <div class="control">
+            <label>Max Leverage</label>
+            <select name="max_leverage">
+              <option>1</option><option>2</option><option>3</option><option>5</option><option>8</option>
+              <option>10</option><option>12</option><option>15</option><option>20</option><option>25</option>
+              <option>50</option><option>75</option><option>100</option><option>125</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Adaptive Leverage Min</label>
+            <select name="adaptive_leverage_min">
+              <option>1</option><option>2</option><option>3</option><option>5</option><option>8</option>
+              <option>10</option><option>12</option><option>15</option><option>20</option><option>25</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Adaptive Leverage Max</label>
+            <select name="adaptive_leverage_max">
+              <option>1</option><option>2</option><option>3</option><option>5</option><option>8</option>
+              <option>10</option><option>12</option><option>15</option><option>20</option><option>25</option>
+              <option>50</option><option>75</option><option>100</option><option>125</option>
+            </select>
+          </div>
+          <div class="control"><label>Risk Per Trade</label><input type="number" name="risk_per_trade" min="0.0001" max="0.2" step="0.0001" /></div>
+          <div class="control"><label>Entry Min Risk USD</label><input type="number" name="entry_min_risk_usd" min="0" step="0.1" /></div>
+          <div class="control"><label>Entry Max Risk USD</label><input type="number" name="entry_max_risk_usd" min="0" step="0.1" /></div>
+          <div class="control"><label>Max Open Positions</label><input type="number" name="max_open_positions" min="1" max="20" step="1" /></div>
+          <div class="control"><label>Max Consecutive Losses Halt</label><input type="number" name="max_consecutive_losses_halt" min="0" max="20" step="1" /></div>
+          <div class="control"><label>Daily Loss Halt %</label><input type="number" name="daily_loss_halt_pct_of_equity" min="0" max="0.5" step="0.001" /></div>
+        </form>
+        <div class="actions"><button id="saveBtn" class="btn primary" type="button">Save Risk</button><button id="resetBtn" class="btn ghost" type="button">Reset</button></div>
+      </main>
+    </div>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

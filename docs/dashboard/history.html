@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trade History</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand"><h1>Futures Bot UI</h1><p class="muted">History section</p></div>
+        <nav class="nav">
+          <a href="index.html">Overview</a><a href="trading.html">Trading</a><a href="pairs.html">Pairs</a><a href="risk.html">Risk</a><a href="telegram.html">Telegram</a><a href="history.html">History</a>
+        </nav>
+        <div class="card">
+          <div class="control"><label>Data Mode</label><select id="dataMode"><option value="demo">Demo</option><option value="live">Live (read-only)</option></select></div>
+          <div class="control"><label>Live API Base URL</label><input id="liveBaseUrl" type="text" /></div>
+          <div class="control"><label>Live Read Token</label><input id="liveReadToken" type="password" /></div>
+        </div>
+      </aside>
+      <main class="content">
+        <section class="card top-card">
+          <div>
+            <h2>Trade History & PnL</h2>
+            <p class="muted">Read-only analytics panel for outcome review and performance checks.</p>
+          </div>
+          <span class="badge success">Read-only</span>
+        </section>
+        <section class="kpi-grid">
+          <article class="card"><p class="kpi-title">Rollout</p><p id="kpiMode" class="kpi">-</p></article>
+          <article class="card"><p class="kpi-title">Strategy</p><p id="kpiStrategy" class="kpi">-</p></article>
+          <article class="card"><p class="kpi-title">Open Positions</p><p id="kpiOpen" class="kpi">-</p></article>
+          <article class="card"><p class="kpi-title">Closed PnL</p><p id="kpiPnl" class="kpi">-</p></article>
+        </section>
+        <section class="card">
+          <h3>Recent Trades</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>ID</th><th>Symbol</th><th>Side</th><th>Status</th><th>Leverage</th><th>PnL</th></tr>
+              </thead>
+              <tbody id="tradesBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

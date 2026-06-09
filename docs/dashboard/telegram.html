@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telegram Controls</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand"><h1>Futures Bot UI</h1><p class="muted">Telegram section</p></div>
+        <nav class="nav">
+          <a href="index.html">Overview</a><a href="trading.html">Trading</a><a href="pairs.html">Pairs</a><a href="risk.html">Risk</a><a href="telegram.html">Telegram</a><a href="history.html">History</a>
+        </nav>
+        <div class="card">
+          <div class="control"><label>Data Mode</label><select id="dataMode"><option value="demo">Demo</option><option value="live">Live (read-only)</option></select></div>
+          <div class="control"><label>Live API Base URL</label><input id="liveBaseUrl" type="text" /></div>
+          <div class="control"><label>Live Read Token</label><input id="liveReadToken" type="password" /></div>
+        </div>
+      </aside>
+      <main class="content">
+        <section class="card top-card">
+          <div>
+            <h2>Telegram & Publication Settings</h2>
+            <p class="muted">Configure setup posts, digest/news behavior, and publication controls.</p>
+          </div>
+          <span class="badge primary">Telegram</span>
+        </section>
+        <section class="card warning-strip">
+          <p>Secrets are masked in public demo and must remain server-managed in production deployments.</p>
+        </section>
+        <form class="card grid grid-2" data-settings-form>
+          <div class="control">
+            <div class="label-row">
+              <label>Desk Setups Enabled</label>
+              <button type="button" class="help-btn" data-help-key="telegram_desk_setups_enabled" data-help-title="Desk Setups">?</button>
+            </div>
+            <div class="switch"><input type="checkbox" name="telegram_desk_setups_enabled" /><span class="hint">Publish setup cards.</span></div>
+          </div>
+          <div class="control">
+            <div class="label-row">
+              <label>Digest Enabled</label>
+              <button type="button" class="help-btn" data-help-key="telegram_digest_enabled" data-help-title="Digest">?</button>
+            </div>
+            <div class="switch"><input type="checkbox" name="telegram_digest_enabled" /><span class="hint">Periodic market digest posts.</span></div>
+          </div>
+          <div class="control">
+            <div class="label-row">
+              <label>News Flash Enabled</label>
+              <button type="button" class="help-btn" data-help-key="telegram_news_flash_enabled" data-help-title="News Flash">?</button>
+            </div>
+            <div class="switch"><input type="checkbox" name="telegram_news_flash_enabled" /><span class="hint">News / Fear&Greed alerts.</span></div>
+          </div>
+          <div class="control">
+            <div class="label-row">
+              <label>Post Live Trades</label>
+              <button type="button" class="help-btn" data-help-key="telegram_post_live_trades" data-help-title="Live Trade Cards">?</button>
+            </div>
+            <div class="switch"><input type="checkbox" name="telegram_post_live_trades" /><span class="hint">Show entry/exit cards in channel.</span></div>
+          </div>
+          <div class="control full-span group-header">
+            <p class="group-title">Publication Cadence</p>
+            <span class="hint">Control how often digest, desk setups, and news flashes are published.</span>
+          </div>
+          <div class="full-span grid grid-3">
+            <div class="control">
+              <div class="label-row">
+                <label>Desk Setups Interval (sec)</label>
+                <button type="button" class="help-btn" data-help-key="telegram_desk_setups_interval_sec" data-help-title="Desk Setups Interval">?</button>
+              </div>
+              <input type="number" name="telegram_desk_setups_interval_sec" min="3600" step="60" />
+            </div>
+            <div class="control">
+              <div class="label-row">
+                <label>Digest Interval (sec)</label>
+                <button type="button" class="help-btn" data-help-key="telegram_digest_interval_sec" data-help-title="Digest Interval">?</button>
+              </div>
+              <input type="number" name="telegram_digest_interval_sec" min="14400" step="60" />
+            </div>
+            <div class="control">
+              <div class="label-row">
+                <label>News Poll Interval (sec)</label>
+                <button type="button" class="help-btn" data-help-key="telegram_news_flash_poll_sec" data-help-title="News Poll Interval">?</button>
+              </div>
+              <input type="number" name="telegram_news_flash_poll_sec" min="45" step="15" />
+            </div>
+            <div class="control">
+              <div class="label-row">
+                <label>News Min Spacing (sec)</label>
+                <button type="button" class="help-btn" data-help-key="telegram_news_flash_min_spacing_sec" data-help-title="News Spacing">?</button>
+              </div>
+              <input type="number" name="telegram_news_flash_min_spacing_sec" min="0" step="60" />
+            </div>
+            <div class="control">
+              <div class="label-row">
+                <label>News Max Per Hour</label>
+                <button type="button" class="help-btn" data-help-key="telegram_news_flash_max_per_hour" data-help-title="News Hourly Cap">?</button>
+              </div>
+              <input type="number" name="telegram_news_flash_max_per_hour" min="1" max="12" step="1" />
+            </div>
+          </div>
+          <div class="control full-span group-header">
+            <p class="group-title">Credentials (Server-Managed)</p>
+            <span class="hint">These values are masked in demo mode and must be injected on the backend in production.</span>
+          </div>
+          <div class="full-span keys-grid">
+            <div class="control"><label>Telegram Bot Token</label><input name="telegram_bot_token" data-secret-placeholder="true" type="password" /><span class="hint">Stored server-side only.</span></div>
+            <div class="control"><label>Telegram Chat ID</label><input name="telegram_signals_chat_id" data-secret-placeholder="true" type="text" /><span class="hint">Stored server-side only.</span></div>
+            <div class="control"><label>OpenAI API Key</label><input name="openai_api_key" data-secret-placeholder="true" type="password" /><span class="hint">Stored server-side only.</span></div>
+          </div>
+        </form>
+        <div class="actions"><button id="saveBtn" class="btn primary" type="button">Save Telegram Settings</button><button id="resetBtn" class="btn ghost" type="button">Reset</button></div>
+      </main>
+    </div>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

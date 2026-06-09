@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Overview</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <h1>Futures Bot UI</h1>
+          <p class="muted">Demo control center</p>
+        </div>
+        <nav class="nav">
+          <a href="index.html">Overview</a>
+          <a href="trading.html">Trading</a>
+          <a href="pairs.html">Pairs</a>
+          <a href="risk.html">Risk</a>
+          <a href="telegram.html">Telegram</a>
+          <a href="history.html">History</a>
+        </nav>
+        <div class="card">
+          <div class="control">
+            <label>Data Mode</label>
+            <select id="dataMode">
+              <option value="demo">Demo</option>
+              <option value="live">Live (read-only)</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Live API Base URL</label>
+            <input id="liveBaseUrl" type="text" placeholder="https://your-bot.up.railway.app" />
+          </div>
+          <div class="control">
+            <label>Live Read Token</label>
+            <input id="liveReadToken" type="password" placeholder="optional" />
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <section class="card overview-hero">
+          <div class="overview-hero-head">
+            <div>
+              <h2>Operations Overview</h2>
+              <p class="muted">Real-time status snapshot with the most important execution and capital metrics.</p>
+            </div>
+            <span class="badge primary">Control Center</span>
+          </div>
+          <div class="overview-tags">
+            <div class="overview-tag">
+              <span class="overview-tag-label">Data Source</span>
+              <strong id="overviewDataSource">-</strong>
+            </div>
+            <div class="overview-tag">
+              <span class="overview-tag-label">Rollout Profile</span>
+              <strong id="kpiMode">-</strong>
+            </div>
+            <div class="overview-tag">
+              <span class="overview-tag-label">Active Strategy</span>
+              <strong id="kpiStrategy">-</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="overview-metrics">
+          <article class="card metric-card">
+            <p class="kpi-title">Total Balance</p>
+            <p id="kpiTotalBalance" class="kpi">-</p>
+          </article>
+          <article class="card metric-card">
+            <p class="kpi-title">Available Balance</p>
+            <p id="kpiAvailableBalance" class="kpi">-</p>
+          </article>
+          <article class="card metric-card">
+            <p class="kpi-title">Margin In Use</p>
+            <p id="kpiMarginInUse" class="kpi">-</p>
+          </article>
+          <article class="card metric-card">
+            <p class="kpi-title">Open Positions</p>
+            <p id="kpiOpen" class="kpi">-</p>
+          </article>
+          <article class="card metric-card">
+            <p class="kpi-title">Unrealized PnL</p>
+            <p id="kpiUnrealized" class="kpi">-</p>
+          </article>
+          <article class="card metric-card">
+            <p class="kpi-title">Closed PnL</p>
+            <p id="kpiPnl" class="kpi">-</p>
+          </article>
+        </section>
+
+        <section class="card info-strip overview-strip">
+          <p>
+            Demo mode stores edits locally and masks sensitive credentials. Live mode remains read-only for safe public monitoring.
+          </p>
+        </section>
+
+        <section class="overview-lower">
+          <article class="card overview-config">
+            <h3>Current Active Configuration</h3>
+            <p class="muted small">Execution-critical parameters currently applied by the runtime profile.</p>
+            <div id="currentConfigList" class="config-list"></div>
+          </article>
+          <article class="card overview-notes">
+            <h3>Operating Guidelines</h3>
+            <ul class="clean">
+              <li>No API keys or tokens are exposed in this browser session.</li>
+              <li>Read-only live mode is intended for transparent portfolio demonstration.</li>
+              <li>Use Trading, Pairs, Risk, and Telegram tabs for controlled adjustments.</li>
+            </ul>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>
