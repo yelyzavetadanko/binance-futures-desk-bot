@@ -9,7 +9,7 @@ const HELP = {
   active_strategy:
     "Primary entry logic used by the trading loop. desk_htf is currently the main production contour.",
   entry_order_mode:
-    "UI-level mode switch for entry intent. Market executes immediately; Limit waits for target price. Engine-side mapping is wired in Phase 6.",
+    "UI-level mode switch for entry intent. Market executes immediately; Limit waits for target price.",
   desk_publish_live_entry_enabled:
     "Allows opening trades directly from published desk setups when conditions are met.",
   desk_trade_published_setups_only:
@@ -193,7 +193,12 @@ function formatEnumLabel(value) {
 function renderDataSourceLabel() {
   const el = document.getElementById("overviewDataSource");
   if (!el) return;
-  const mode = document.getElementById("dataMode")?.value || "demo";
+  const modeControl = document.getElementById("dataMode");
+  if (!modeControl) {
+    el.textContent = "Showcase Demo";
+    return;
+  }
+  const mode = modeControl.value || "demo";
   el.textContent = mode === "live" ? "Live (Read-Only)" : "Demo (Local)";
 }
 
