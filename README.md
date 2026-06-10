@@ -39,6 +39,19 @@ The dashboard is publicly visible for interface and architecture review, while r
 
 ---
 
+## How to request access
+
+If you want a private deployment or a tailored version for your stack, send:
+
+1. Your target exchange(s) and market type (spot/futures).
+2. Required integrations (Telegram, database, webhooks, analytics, broker APIs).
+3. Preferred deployment model (Railway, VPS, Docker, cloud VM).
+4. Risk constraints and reporting requirements.
+
+You will receive a scoped implementation plan, delivery timeline, and fixed quote range.
+
+---
+
 ## Collaboration & implementation
 
 If you need a private, production-grade implementation for your own stack, please reach out.
@@ -53,6 +66,7 @@ If you need a private, production-grade implementation for your own stack, pleas
 - **Audit + architecture consultation:** from **$200**
 - **UI + API adaptation package:** from **$1,500**
 - **Custom production implementation:** from **$3,500**
+- **Ongoing support & optimization:** scoped monthly retainer
 
 Final quote depends on scope, integrations, and deployment requirements.
 
