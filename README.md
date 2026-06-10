@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
 [![Showcase](https://img.shields.io/badge/Type-Portfolio%20Showcase-2563eb)](#)
-[![UI Demo](https://img.shields.io/badge/UI-GitHub%20Pages-0ea5e9)](#live-ui-preview)
+[![UI Demo](https://img.shields.io/badge/UI-Live%20Preview-0ea5e9)](#live-ui-preview)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 This repository is a **safe public showcase** of a production trading system architecture and operator interface.
@@ -32,11 +32,10 @@ It is intentionally published as a **demo/vitrine**:
 
 ## Live UI preview
 
-After GitHub Pages is enabled for this repository:
+- **Preview URL:** `https://binance-railway-production.up.railway.app/ui/index.html`
+- **Access model:** Public view + owner-protected write actions.
 
-- **Preview URL:** `https://yelyzavetadanko.github.io/binance-futures-desk-bot/`
-
-The dashboard runs in safe demo mode by default and is presented for interface and architecture review.
+The dashboard is publicly visible for interface and architecture review, while runtime mutations are restricted to authorized owner sessions.
 
 ---
 
